@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>80 Teresa · Invitación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600;700&family=Pinyon+Script&family=Italiana&display=swap" rel="stylesheet"/>
+<link rel="preload" as="image" href="assets/sello.png"/>
+<link rel="preload" as="image" href="assets/florals.png"/>
+<link rel="preload" as="image" href="assets/corner-flower.png"/>
+<link rel="preload" as="image" href="assets/corner-flower-top.png"/>
+<link rel="preload" as="image" href="assets/corner-flower-bottom.png"/>
+<link rel="preload" as="image" href="assets/divider-flower.png"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #e8e4d6; }
+  body { font-family: 'Jost', system-ui, sans-serif; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+  /* On larger screens, show a warm "matte" around the card */
+  @media (min-width: 600px) {
+    body { background: #e8e4d6; }
+  }
+  @keyframes petalBob {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-3px) rotate(0.6deg); }
+  }
+  @keyframes floatUp {
+    0% { transform: translate(0, 0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 0.8; }
+    100% { transform: translate(var(--drift, 0), -800px); opacity: 0; }
+  }
+  @keyframes flowerSway {
+    0%, 100% { transform: rotate(-0.6deg) scale(1); }
+    50% { transform: rotate(0.6deg) scale(1.012); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 0.9; }
+  }
+  /* ─── Ethereal entrance animations ─── */
+  @keyframes etherealRise {
+    0% { opacity: 0; transform: translateY(40px) scale(0.96); filter: blur(14px); }
+    60% { opacity: 1; }
+    100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  }
+  @keyframes etherealScale {
+    0% { opacity: 0; transform: scale(0.7); filter: blur(18px) brightness(1.4); }
+    50% { opacity: 1; filter: blur(2px) brightness(1.15); }
+    100% { opacity: 1; transform: scale(1); filter: blur(0) brightness(1); }
+  }
+  @keyframes etherealFade {
+    0% { opacity: 0; transform: translateY(12px); filter: blur(10px); }
+    100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+  }
+  @keyframes etherealGlow {
+    0% { opacity: 0; transform: scale(0.6) rotate(-3deg); filter: blur(22px) brightness(1.6); }
+    40% { opacity: 1; filter: blur(4px) brightness(1.25); }
+    100% { opacity: 1; transform: scale(1) rotate(0); filter: blur(0) brightness(1); }
+  }
+  @keyframes flowerEnter {
+    0%   { opacity: 0; transform: scale(1.7); filter: blur(24px); }
+    40%  { opacity: 1; }
+    100% { opacity: 1; transform: scale(1); filter: blur(0); }
+  }
+  @keyframes drawLine {
+    0% { transform: scaleX(0); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: scaleX(1); opacity: 1; }
+  }
+  @keyframes shimmer {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.4); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .ethereal-rise   { animation: etherealRise 1800ms cubic-bezier(.16,.7,.24,1) both; }
+  .ethereal-scale  { animation: etherealScale 2200ms cubic-bezier(.16,.7,.24,1) both; }
+  .ethereal-fade   { animation: etherealFade 1700ms cubic-bezier(.4,.0,.2,1) both; }
+  .ethereal-glow   { animation: etherealGlow 2400ms cubic-bezier(.16,.7,.24,1) both; }
+  .draw-line       { animation: drawLine 1200ms cubic-bezier(.4,.0,.2,1) both; transform-origin: center; }
+  .shimmer         { animation: shimmer 4s ease-in-out infinite; }
+  .float           { animation: float 6s ease-in-out infinite; }
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.08); opacity: 1; }
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes ring {
+    0% { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(1.45); opacity: 0; }
+  }
+  @keyframes burst {
+    0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translate(calc(-50% + var(--bx, 0)), calc(-50% + var(--by, 0))) scale(0.7); opacity: 0; }
+  }
+  @keyframes magicBloom {
+    0%, 100% { transform: scaleX(-1) rotate(0deg) scale(1); filter: brightness(1) drop-shadow(0 0 0 rgba(180,160,220,0)); }
+    25%      { transform: scaleX(-1) rotate(-0.8deg) scale(1.012); filter: brightness(1.04) drop-shadow(0 0 18px rgba(180,160,220,0.18)); }
+    50%      { transform: scaleX(-1) rotate(0deg) scale(1.02); filter: brightness(1.07) drop-shadow(0 0 26px rgba(195,180,235,0.24)); }
+    75%      { transform: scaleX(-1) rotate(0.8deg) scale(1.012); filter: brightness(1.04) drop-shadow(0 0 18px rgba(180,160,220,0.18)); }
+  }
+  @keyframes magicSparkle {
+    0%, 100% { opacity: 0; transform: translate(0,0) scale(0.4); }
+    20%      { opacity: 0.9; transform: translate(var(--sx,0), var(--sy,0)) scale(1); }
+    50%      { opacity: 0.6; transform: translate(calc(var(--sx,0) * 1.4), calc(var(--sy,0) * 1.4)) scale(0.85); }
+    80%      { opacity: 0; transform: translate(calc(var(--sx,0) * 1.8), calc(var(--sy,0) * 1.8)) scale(0.4); }
+  }
+  /* ─── Shooting stars: stronger, more frequent, more visible. ─── */
+  @keyframes shoot1 {
+    0%   { transform: translate(-80px, 30px) rotate(22deg); opacity: 0; }
+    2%   { opacity: 1; }
+    18%  { opacity: 1; }
+    22%  { transform: translate(460px, 230px) rotate(22deg); opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @keyframes shoot2 {
+    0%   { transform: translate(-50px, 360px) rotate(-18deg); opacity: 0; }
+    2%   { opacity: 1; }
+    20%  { opacity: 1; }
+    24%  { transform: translate(480px, 100px) rotate(-18deg); opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @keyframes shoot3 {
+    0%   { transform: translate(420px, -40px) rotate(150deg); opacity: 0; }
+    2%   { opacity: 1; }
+    20%  { opacity: 1; }
+    24%  { transform: translate(-100px, 280px) rotate(150deg); opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @keyframes shoot4 {
+    0%   { transform: translate(-60px, 640px) rotate(28deg); opacity: 0; }
+    2%   { opacity: 1; }
+    18%  { opacity: 1; }
+    22%  { transform: translate(470px, 920px) rotate(28deg); opacity: 0; }
+    100% { opacity: 0; }
+  }
+  /* ─── Letter glow — stronger flash, longer visible window ─── */
+  @keyframes letterGlow {
+    0%, 70%, 100% {
+      text-shadow: none;
+      filter: brightness(1);
+    }
+    82% {
+      text-shadow:
+        0 0 18px rgba(245,217,138,0.85),
+        0 0 38px rgba(232,201,122,0.55),
+        0 0 60px rgba(232,201,122,0.3);
+      filter: brightness(1.18);
+    }
+    88% {
+      text-shadow:
+        0 0 22px rgba(245,217,138,0.95),
+        0 0 48px rgba(232,201,122,0.7),
+        0 0 80px rgba(232,201,122,0.4);
+      filter: brightness(1.25);
+    }
+    94% {
+      text-shadow:
+        0 0 18px rgba(245,217,138,0.85),
+        0 0 38px rgba(232,201,122,0.55),
+        0 0 60px rgba(232,201,122,0.3);
+      filter: brightness(1.18);
+    }
+  }
+  /* ─── Subtle sway for corner florals — preserves their mirror transform ─── */
+  @keyframes swayTopLeft {
+    0%, 100% { transform: scaleY(-1) rotate(-0.7deg); }
+    50%      { transform: scaleY(-1) rotate(0.7deg); }
+  }
+  @keyframes swayBottomRight {
+    0%, 100% { transform: scaleX(-1) rotate(-0.7deg); }
+    50%      { transform: scaleX(-1) rotate(0.7deg); }
+  }
+  /* hide tweak panel scrollbars softly */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="invitation.jsx"></script>
+</body>
+</html>
