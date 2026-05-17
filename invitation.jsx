@@ -362,10 +362,10 @@ function Envelope({ palette, onOpen, onClickStart }) {
       try { onClickStart(); } catch (e) {}
     }
     setPhase(1);
-    setTimeout(() => setPhase(2), 350);
-    setTimeout(() => setPhase(3), 900);
-    setTimeout(() => setPhase(4), 1700);
-    setTimeout(() => onOpen(), 2000);
+    setTimeout(() => setPhase(2), 473);
+    setTimeout(() => setPhase(3), 1215);
+    setTimeout(() => setPhase(4), 2295);
+    setTimeout(() => onOpen(), 2700);
   };
   const opening = phase >= 1;
   const burst = phase >= 1 ? Array.from({ length: 20 }) : [];
@@ -374,7 +374,7 @@ function Envelope({ palette, onOpen, onClickStart }) {
       position: 'absolute', inset: 0, zIndex: 100, cursor: phase === 0 ? 'pointer' : 'default',
       background: `radial-gradient(120% 80% at 50% 30%, ${palette.bgWarm} 0%, ${palette.bg} 70%)`,
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      transition: 'opacity 700ms ease',
+      transition: 'opacity 945ms ease',
       opacity: phase >= 4 ? 0 : 1,
       overflow: 'hidden',
     }}>
@@ -394,7 +394,7 @@ function Envelope({ palette, onOpen, onClickStart }) {
               background: 'radial-gradient(circle, #f5d98a 0%, #c89b3b 60%, transparent 100%)',
               boxShadow: '0 0 10px rgba(232,201,122,0.85)',
               transform: 'translate(-50%, -50%)',
-              animation: `burst 1100ms cubic-bezier(.15,.7,.25,1) forwards`,
+              animation: `burst 1485ms cubic-bezier(.15,.7,.25,1) forwards`,
               animationDelay: `${i * 8}ms`,
               ['--bx']: `${dx}px`, ['--by']: `${dy}px`,
             }}/>
@@ -458,8 +458,8 @@ function Envelope({ palette, onOpen, onClickStart }) {
               ? 'scale(1.04) translateY(-6px) rotate(-1deg)'
               : 'scale(1) rotate(-1.5deg)',
         transition: phase >= 4
-          ? 'transform 600ms cubic-bezier(.6,.2,.4,1)'
-          : 'transform 1100ms cubic-bezier(.2,.7,.2,1)',
+          ? 'transform 810ms cubic-bezier(.6,.2,.4,1)'
+          : 'transform 1485ms cubic-bezier(.2,.7,.2,1)',
         filter: 'drop-shadow(0 18px 28px rgba(40,30,15,0.18))',
       }}>
         {/* Realistic envelope SVG */}
@@ -540,7 +540,7 @@ function Envelope({ palette, onOpen, onClickStart }) {
           position: 'absolute', top: 0, left: 0, width: '100%', height: 130,
           transformOrigin: 'top center',
           transform: phase >= 2 ? 'rotateX(-178deg)' : 'rotateX(0deg)',
-          transition: 'transform 1100ms cubic-bezier(.4,.1,.3,1)',
+          transition: 'transform 1485ms cubic-bezier(.4,.1,.3,1)',
           transformStyle: 'preserve-3d',
           filter: 'drop-shadow(0 2px 3px rgba(60,40,15,0.15))',
           zIndex: 3,
@@ -580,8 +580,8 @@ function Envelope({ palette, onOpen, onClickStart }) {
               : 'scale(1) rotate(-2deg)',
             opacity: phase >= 2 ? 0 : 1,
             transition: phase >= 1
-              ? 'transform 800ms cubic-bezier(.4,.1,.3,1), opacity 500ms ease 500ms'
-              : 'transform 700ms cubic-bezier(.4,.1,.3,1)',
+              ? 'transform 1080ms cubic-bezier(.4,.1,.3,1), opacity 675ms ease 675ms'
+              : 'transform 945ms cubic-bezier(.4,.1,.3,1)',
           }}/>
         </div>
 
@@ -592,7 +592,7 @@ function Envelope({ palette, onOpen, onClickStart }) {
           height: 210,
           opacity: phase >= 3 ? 1 : 0,
           transform: phase >= 4 ? 'scale(1.05)' : 'scale(1)',
-          transition: 'top 1000ms cubic-bezier(.2,.7,.2,1), opacity 500ms ease, transform 600ms ease',
+          transition: 'top 1350ms cubic-bezier(.2,.7,.2,1), opacity 675ms ease, transform 810ms ease',
           zIndex: 5,
           background: 'linear-gradient(180deg, #fffaf0 0%, #fbf3e0 100%)',
           boxShadow: '0 12px 28px rgba(40,30,15,0.25), 0 0 0 1px rgba(200,155,59,0.35) inset, 0 0 0 6px rgba(255,250,240,0.7) inset, 0 0 0 7px rgba(200,155,59,0.4) inset',
@@ -705,7 +705,7 @@ function buildICS() {
     `DTSTART:${start}`,
     `DTEND:${end}`,
     'SUMMARY:80 años de Teresa',
-    'LOCATION:Salón El Viejo Oliva\\, Alberto Dura 3693\\, Montevideo',
+    'LOCATION:Salón El Viejo Oliva\\, Camino Rigel 3209\\, Montevideo',
     'DESCRIPTION:Una celebración muy especial. Dress code: semi formal.',
     'END:VEVENT','END:VCALENDAR',
   ].join('\r\n');
@@ -790,7 +790,7 @@ function InvitationCard({ tweaks, opened, music }) {
   const palette = PALETTES[tweaks.palette];
   const target = new Date('2026-06-27T13:00:00-03:00').getTime();
   const wa = `https://wa.me/59895092897?text=${encodeURIComponent('Teresa! Como estas? Te confirmo mi asistencia en tus 80 años.')}`;
-  const maps = 'https://maps.app.goo.gl/b3TfFkkhbvK9LNAWA';
+  const maps = 'https://maps.app.goo.gl/yJKBvChTBM3iwnWu9';
 
   return (
     <div style={{
@@ -1068,7 +1068,7 @@ function InvitationCard({ tweaks, opened, music }) {
                 fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic',
                 fontSize: 19, color: palette.ink,
                 fontWeight: 400, lineHeight: 1.5, textAlign: 'center',
-              }}>Alberto Dura 3693<br/>Montevideo</div>
+              }}>Camino Rigel 3209<br/>Montevideo</div>
             </div>
 
             {/* "Cómo llegar" — refined text link */}
